@@ -27,13 +27,7 @@ class ViewController: UIViewController, WCSessionDelegate{
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         dispatch_async(dispatch_get_main_queue()) {
-            self.countText.text = message["count"] as? String
-        }
-    }
-    
-    func handleWatchKitNotification(notification: NSNotification){
-        if let userInfo = notification.object as? [String: String] {
-            countText.text = userInfo["data"]
+            self.countText.text = message["anger_value"] as? String
         }
     }
 

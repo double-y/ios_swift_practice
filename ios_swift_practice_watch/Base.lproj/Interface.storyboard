@@ -10,24 +10,19 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ios_swift_practice_watch" customModuleProvider="target">
                     <items>
-                        <label width="1" alignment="left" text="0" textAlignment="center" id="RQk-Bd-t0H"/>
-                        <group width="1" alignment="left" verticalAlignment="bottom" id="oM6-Fp-PBN">
-                            <items>
-                                <button width="0.40000000000000002" alignment="right" title="-" id="BUS-FP-lSq">
-                                    <connections>
-                                        <action selector="reduceCountLabel" destination="AgC-eL-Hgc" id="bMa-hU-cjW"/>
-                                    </connections>
-                                </button>
-                                <button width="0.40000000000000002" alignment="left" title="+" id="9UN-F4-MNe">
-                                    <connections>
-                                        <action selector="addCountLabel" destination="AgC-eL-Hgc" id="xd3-s6-Ueq"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
+                        <picker width="1" height="1" alignment="left" style="sequence" id="ISh-tG-Snz">
+                            <connections>
+                                <action selector="pickerItemChanged:" destination="AgC-eL-Hgc" id="cU4-2e-ok1"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Send" id="p10-JZ-Qjv">
+                            <connections>
+                                <action selector="sendData" destination="AgC-eL-Hgc" id="fzq-Tj-ZNc"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
-                        <outlet property="CountLabel" destination="RQk-Bd-t0H" id="i7Y-eo-eXb"/>
+                        <outlet property="sequencePicker" destination="ISh-tG-Snz" id="6SP-hK-2GD"/>
                     </connections>
                 </controller>
             </objects>
