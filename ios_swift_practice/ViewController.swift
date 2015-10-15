@@ -15,7 +15,6 @@ class ViewController: UIViewController, WCSessionDelegate{
     var session: WCSession!
     @IBOutlet weak var angerValue: UITextField!
     @IBOutlet weak var happinessValue: UITextField!
-    @IBOutlet weak var lineChart: LineChartView!
     
     var happinessData = [NSManagedObject]()
     var angerData = [NSManagedObject]()
@@ -49,27 +48,6 @@ class ViewController: UIViewController, WCSessionDelegate{
             print("Could not fetch \(error), \(error.userInfo)")
         }
         */
-        do{
-            let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-            let emotion1 = try Emotion.createData(managedObjectContext, name: "test")
-            print(emotion1!.name)
-            let emotionArray = try Emotion.fetchData(managedObjectContext, name: "test")
-            print(emotionArray?.count)
-            for emotion in emotionArray! {
-                print(emotion.name)
-                print(managedObjectContext.deleteObject(emotion))
-            }
-            try managedObjectContext.save()
-        }catch{
-            print("fail")
-        }
-        
-        lineChart.descriptionText = "text"
-        lineChart.noDataTextDescription = "no data"
-        let sampleEntry = BarChartDataEntry(value: 1, xIndex: 0)
-        let dataset = LineChartDataSet(yVals: [sampleEntry])
-        let chartData = LineChartData(xVals: ["aa"], dataSet: dataset)
-        lineChart.data = chartData
     }
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {

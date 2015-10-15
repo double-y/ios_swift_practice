@@ -15,8 +15,14 @@ class Emotion: NSManagedObject {
     // Insert code here to add functionality to your managed object subclass
     
     static func createData(context: NSManagedObjectContext, name:String) throws -> Emotion? {
-        let emotion = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Emotion
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])
+        let result = try context.executeFetchRequest(fetchRequest)
+        if(result.count>0){
+            throw ModelError.UniqueViolationError
+        }
         
+        let emotion = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Emotion
         emotion.name = name
         try context.save()
         return emotion

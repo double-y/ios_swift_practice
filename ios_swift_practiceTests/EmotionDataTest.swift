@@ -18,7 +18,14 @@ class EmotionDataTest: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         //objectContext = setUpInMemoryManagedObjectContext()
-        objectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        objectContext = setUpInMemoryManagedObjectContext()
+    }
+    
+    func testCreateEmotionData(){
+        let emotionName = "createEmotionDataTest"
+        let emotion = EmotionTest.createEmotion(emotionName, objectContext: objectContext)
+        let emotionData = try! EmotionData.createEmotionData(objectContext, emotion: emotion, value: 5)
+        XCTAssertEqual(emotionData.value, 5)
     }
 
 }
