@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Anger Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ios_swift_practice_watch" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="AngerInterfaceController" customModule="ios_swift_practice_watch_Extension">
                     <items>
                         <picker width="1" height="1" alignment="left" style="sequence" id="ISh-tG-Snz">
                             <connections>
@@ -26,7 +26,30 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="169" y="337.75"/>
+        </scene>
+        <!--happinessController-->
+        <scene sceneID="OEC-i3-qtK">
+            <objects>
+                <controller identifier="happinessController" id="054-An-eG8" customClass="HappinessInterfaceController" customModule="ios_swift_practice_watch_Extension">
+                    <items>
+                        <picker width="1" height="1" alignment="left" style="sequence" id="3ps-rE-y1C">
+                            <connections>
+                                <action selector="pickerItemChanged:" destination="054-An-eG8" id="mZt-Rq-JVg"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Send" id="hfu-CX-ype">
+                            <connections>
+                                <action selector="sendData" destination="054-An-eG8" id="ibF-sy-ter"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="sequencePicker" destination="3ps-rE-y1C" id="ZjK-an-IUU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="361" y="337.75"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

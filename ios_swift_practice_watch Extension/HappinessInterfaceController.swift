@@ -1,4 +1,12 @@
 //
+//  HappinessInterfaceController.swift
+//  ios_swift_practice
+//
+//  Created by 安田洋介 on 10/10/15.
+//  Copyright © 2015 安田洋介. All rights reserved.
+//
+
+//
 //  InterfaceController.swift
 //  ios_swift_practice_watch Extension
 //
@@ -10,26 +18,26 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class HappinessInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var sequencePicker: WKInterfacePicker!
     var value = 0
     let items:[WKPickerItem] = (0...10).map {
         let pickerItem = WKPickerItem()
-        let fileName = "single\($0)anger.png"
+        let fileName = "single\($0)happiness.png"
         pickerItem.contentImage = WKImage(imageName: fileName)
         return pickerItem
     }
     var session: WCSession!
-
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
         sequencePicker.setItems(items)
-        sequencePicker.setSelectedItemIndex(50)
+        sequencePicker.setSelectedItemIndex(5)
         sequencePicker.focus()
     }
-
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -42,7 +50,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
         }
     }
-
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
@@ -53,7 +61,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     @IBAction func sendData() {
-        session.sendMessage(["anger_value": String(self.value)],
+        session.sendMessage(["happiness_value": String(self.value)],
             replyHandler: {(response) -> Void in
                 print("reply")
             },
@@ -65,12 +73,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     /*
     func setCountLabelCount(count: Int) {
-        // print(UIFont.familyNames()) ["Arial Hebrew", "Oriya Sangam MN", "Symbol", "Tamil Sangam MN", "Gurmukhi MN", "Courier New", "Courier", "Kohinoor Bangla", "Apple Color Emoji", "Lao Sangam MN", "Bangla Sangam MN", "Telugu Sangam MN", "Kailasa", "PingFang TC", "Heiti SC", "Malayalam Sangam MN", "Thonburi", "Zapf Dingbats", "Kohinoor Telugu", "Avenir Next", "Apple SD Gothic Neo", "Helvetica", "Euphemia UCAS", "PingFang SC", "PingFang HK", "Gujarati Sangam MN", "Heiti TC", "Sinhala Sangam MN", "Kannada Sangam MN", "Hiragino Sans", "Khmer Sangam MN", "Times New Roman", "Geeza Pro", "Helvetica Neue", "Kohinoor Devanagari", "Avenir"]
-        //let menloFont = UIFont(name: "Arial Hebrew", size: 12.0)!
-        //let fontAttrs = [NSFontAttributeName : menloFont]
-        
-        // Set the text on the label object
-        //self.CountLabel.setAttributedText(NSAttributedString(string: String(count), attributes: fontAttrs))
+    // print(UIFont.familyNames()) ["Arial Hebrew", "Oriya Sangam MN", "Symbol", "Tamil Sangam MN", "Gurmukhi MN", "Courier New", "Courier", "Kohinoor Bangla", "Apple Color Emoji", "Lao Sangam MN", "Bangla Sangam MN", "Telugu Sangam MN", "Kailasa", "PingFang TC", "Heiti SC", "Malayalam Sangam MN", "Thonburi", "Zapf Dingbats", "Kohinoor Telugu", "Avenir Next", "Apple SD Gothic Neo", "Helvetica", "Euphemia UCAS", "PingFang SC", "PingFang HK", "Gujarati Sangam MN", "Heiti TC", "Sinhala Sangam MN", "Kannada Sangam MN", "Hiragino Sans", "Khmer Sangam MN", "Times New Roman", "Geeza Pro", "Helvetica Neue", "Kohinoor Devanagari", "Avenir"]
+    //let menloFont = UIFont(name: "Arial Hebrew", size: 12.0)!
+    //let fontAttrs = [NSFontAttributeName : menloFont]
+    
+    // Set the text on the label object
+    //self.CountLabel.setAttributedText(NSAttributedString(string: String(count), attributes: fontAttrs))
     }*/
-
+    
 }

@@ -39,27 +39,33 @@
                                     <constraint firstAttribute="height" constant="36" id="FAE-vy-c8G"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-7d-4mS">
-                                <rect key="frame" x="20" y="186" width="48" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="fhh-9I-z5N"/>
-                                    <constraint firstAttribute="width" constant="48" id="kwG-jY-FZY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="happiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-HG-maY">
                                 <rect key="frame" x="20" y="150" width="78.5" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="75L-oT-jCK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-7d-4mS">
+                                <rect key="frame" x="20" y="186" width="48" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="fhh-9I-z5N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fr8-Rc-5tP" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="269" width="560" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="fct-X0-DnD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,8 +76,11 @@
                             <constraint firstItem="e8m-HG-maY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BKo-zX-WAS"/>
                             <constraint firstItem="kkn-kg-iyy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Dhy-pU-8A7"/>
                             <constraint firstItem="kkn-kg-iyy" firstAttribute="top" secondItem="F9m-nU-IzY" secondAttribute="bottom" id="KLa-1d-4Ki"/>
+                            <constraint firstItem="Fr8-Rc-5tP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KMf-Nw-P0B"/>
                             <constraint firstItem="gUD-7d-4mS" firstAttribute="top" secondItem="e8m-HG-maY" secondAttribute="bottom" id="Par-wF-pIh"/>
                             <constraint firstItem="kkn-kg-iyy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SJo-Nb-3J1"/>
+                            <constraint firstItem="Fr8-Rc-5tP" firstAttribute="top" secondItem="gUD-7d-4mS" secondAttribute="bottom" constant="47" id="SeG-Vf-rBc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fr8-Rc-5tP" secondAttribute="trailing" id="VJj-oZ-2gI"/>
                             <constraint firstItem="kkn-kg-iyy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VMa-Q0-uXS"/>
                             <constraint firstItem="kkn-kg-iyy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="biW-DP-AuO"/>
                             <constraint firstItem="F9m-nU-IzY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eIU-VC-z4z"/>
@@ -81,11 +90,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="countText" destination="kkn-kg-iyy" id="pEg-QS-Jd6"/>
+                        <outlet property="angerValue" destination="kkn-kg-iyy" id="pPd-8n-80d"/>
+                        <outlet property="happinessValue" destination="gUD-7d-4mS" id="UXH-E0-4H2"/>
+                        <outlet property="lineChart" destination="Fr8-Rc-5tP" id="WOh-Ne-tyS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="190" y="317"/>
         </scene>
         <!--Sample Table View Controller-->
         <scene sceneID="DX4-KY-92F">
@@ -138,6 +150,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQw-gZ-WzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041" y="317"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="e1H-j8-Qgx">
+            <objects>
+                <viewController id="tl3-nw-IHf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gSG-Pk-fec"/>
+                        <viewControllerLayoutGuide type="bottom" id="NOI-Wz-666"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dVf-X8-NlG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6Q-PZ-gzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="1042"/>
         </scene>
     </scenes>
 </document>
