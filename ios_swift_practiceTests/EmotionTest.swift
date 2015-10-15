@@ -20,8 +20,14 @@ class EmotionTest: XCTestCase {
         //objectContext = setUpInMemoryManagedObjectContext()
         objectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
-    func testAddEmotion(){
+    func testCreateEmotion(){
         EmotionTest.createEmotion("insert_test", objectContext: objectContext)
+    }
+    func testFetchData(){
+        let name = "fetchTest"
+        EmotionTest.createEmotion(name, objectContext: objectContext)
+        let fetchedData = try! Emotion.fetchData(objectContext, name: name)
+        XCTAssertEqual(fetchedData!.count, 1)
     }
     static func createEmotion(nameValue:String, objectContext: NSManagedObjectContext) -> Emotion{
         let emotion = try! Emotion.createData(objectContext, name: nameValue)
