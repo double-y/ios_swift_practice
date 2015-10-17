@@ -28,9 +28,14 @@ class Emotion: NSManagedObject {
         return emotion
     }
     
+    static func fetch(context: NSManagedObjectContext) throws -> [Emotion]? {
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        return try context.executeFetchRequest(fetchRequest) as? [Emotion]
+    }
+    
     static func fetchData(context: NSManagedObjectContext, name: String) throws -> [Emotion]? {
     
-        let fetchRequest = NSFetchRequest(entityName: "Emotion")
+        let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])
     
         return try context.executeFetchRequest(fetchRequest) as? [Emotion]

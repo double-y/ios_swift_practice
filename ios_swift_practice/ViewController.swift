@@ -16,6 +16,8 @@ class ViewController: UIViewController, WCSessionDelegate{
     @IBOutlet weak var angerValue: UITextField!
     @IBOutlet weak var happinessValue: UITextField!
     
+    var managedObjectContext: NSManagedObjectContext! = nil
+    
     var happinessData = [NSManagedObject]()
     var angerData = [NSManagedObject]()
     
@@ -29,25 +31,19 @@ class ViewController: UIViewController, WCSessionDelegate{
             session.activateSession()
         }
 
-        /*
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        //2
-        let predicate = NSPredicate(format: "name==happiness")
-        let happinessFetchRequest = NSFetchRequest(entityName: "Emotion")
-        happinessFetchRequest.predicate = predicate
-        //3
-        do {
-            let happinessEmotionResults =
-            try managedContext.executeFetchRequest(happinessFetchRequest)
-            let happinessEmotion = happinessEmotionResults as! [Emotion]
-            happinessEmotion
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+        managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
+        do{
+            let emotions = try Emotion.fetch(managedObjectContext)
+            for emotion in emotions! {
+                managedObjectContext.deleteObject(emotion)
+            }
+            try managedObjectContext.save()
+            try Emotion.createData(managedObjectContext, name: "happiness")
+            try Emotion.createData(managedObjectContext, name: "stress")
+        }catch{
+            print("create error")
         }
-        */
     }
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
@@ -62,7 +58,17 @@ class ViewController: UIViewController, WCSessionDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? YYAddEmotionDataNavigationController{
+            let emotion = try! Emotion.fetch(managedObjectContext)
+            if(emotion == nil){
+            }else{
+                vc.emotionCount = 1
+                vc.emotions = emotion!
+            }
+        }
+    }
 
 }
 
