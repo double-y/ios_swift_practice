@@ -16,28 +16,32 @@ class YYAddEmotionDataController: UIViewController{
 
     @IBOutlet weak var finishButton: UIBarButtonItem!
 
-    var emotionCount = 1
+    var emotionIndex = 0
     var emotionName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emotionLabel.text = emotionName
-        self.title = getParentViewController().emotions[emotionCount-1].name
-        let nextEmotionIndex = emotionCount
+        self.title = getParentViewController().emotions[emotionIndex].name
+        let nextEmotionIndex = emotionIndex + 1
         if(nextEmotionIndex < getParentViewController().emotions.count){
             finishButton.title = getParentViewController().emotions[nextEmotionIndex].name
         }
     }
     
     @IBAction func finish(sender: AnyObject) {
+        let emotionData = try! EmotionData.create(getParentViewController().managedObjectContext, value: Int(emotionSlider.value))
+        getParentViewController().saveEmotionData(emotionIndex, emotionData:emotionData)
+        
         let viewController = YYAddEmotionDataController.instantiateViewController()
-        viewController.emotionCount = emotionCount + 1
-        if(viewController.emotionCount <= getParentViewController().emotions.count){
+        viewController.emotionIndex = emotionIndex + 1
+        if(viewController.emotionIndex < getParentViewController().emotions.count){
             self.navigationController!.pushViewController(viewController, animated: true)
-            viewController.title = getParentViewController().emotions[emotionCount-1].name
+            viewController.title = getParentViewController().emotions[viewController.emotionIndex].name
             getParentViewController().navigationController?.pushViewController(viewController, animated: true)
         }else{
-            dismissViewControllerAnimated(true, completion: nil)
+            let noteViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("YYAddEmotionDataNoteViewController") as! YYAddEmotionDataNoteViewController
+            navigationController?.pushViewController(noteViewController, animated: true)
         }
     }
     

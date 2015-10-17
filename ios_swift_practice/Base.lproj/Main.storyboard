@@ -84,11 +84,12 @@
                     </navigationBar>
                     <connections>
                         <segue destination="mg9-XO-ShL" kind="relationship" relationship="rootViewController" id="Vhn-4f-ZCc"/>
+                        <segue destination="ssj-Wz-2LQ" kind="push" id="QSL-3S-XBB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dY-tl-5C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-225" y="210"/>
+            <point key="canvasLocation" x="-189" y="178"/>
         </scene>
         <!--Add Emotion Data Controller-->
         <scene sceneID="5IC-9W-p0J">
@@ -124,7 +125,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="dF7-eQ-1LJ">
                             <color key="tintColor" red="1" green="0.03014565537" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Finish" id="Ayk-Jh-oM0">
+                        <barButtonItem key="rightBarButtonItem" title="Note" id="Ayk-Jh-oM0">
                             <connections>
                                 <action selector="finish:" destination="mg9-XO-ShL" id="lVq-dK-urU"/>
                             </connections>
@@ -138,7 +139,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yas-eQ-79V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="594"/>
+            <point key="canvasLocation" x="803" y="931"/>
+        </scene>
+        <!--Add Emotion Data Note View Controller-->
+        <scene sceneID="AOc-jY-Wlo">
+            <objects>
+                <viewController storyboardIdentifier="YYAddEmotionDataNoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ssj-Wz-2LQ" customClass="YYAddEmotionDataNoteViewController" customModule="ios_swift_practice" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VpT-6g-v3j"/>
+                        <viewControllerLayoutGuide type="bottom" id="wCQ-3a-e52"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fe2-4S-C2d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8m-Li-5Nm">
+                                <rect key="frame" x="20" y="64" width="560" height="492"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k8m-Li-5Nm" firstAttribute="leading" secondItem="fe2-4S-C2d" secondAttribute="leadingMargin" id="1Ic-qj-3Yu"/>
+                            <constraint firstItem="wCQ-3a-e52" firstAttribute="top" secondItem="k8m-Li-5Nm" secondAttribute="bottom" id="5hi-6y-Z2L"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k8m-Li-5Nm" secondAttribute="trailing" id="G1V-5l-4OA"/>
+                            <constraint firstItem="k8m-Li-5Nm" firstAttribute="top" secondItem="VpT-6g-v3j" secondAttribute="bottom" id="Iik-gx-eFg"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fCz-Du-cul">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="vRg-bt-alO">
+                            <color key="tintColor" red="1" green="0.03014565537" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="back:" destination="ssj-Wz-2LQ" id="cjd-cw-rgv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Finish" id="Kf6-vC-LFP">
+                            <connections>
+                                <action selector="finish:" destination="ssj-Wz-2LQ" id="14i-lg-dJ8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="noteField" destination="k8m-Li-5Nm" id="SDS-h5-3ZA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xPz-wQ-hHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="363"/>
         </scene>
         <!--Sample Table View Controller-->
         <scene sceneID="DX4-KY-92F">

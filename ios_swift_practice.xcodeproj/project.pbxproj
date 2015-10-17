@@ -10,9 +10,9 @@
 		5F2090E31BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
 		5F2090E61BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		5F2090E71BD1DBA500314B13 /* EmotionDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */; settings = {ASSET_TAGS = (); }; };
+		5F2090E91BD1E3BC00314B13 /* YYAddEmotionDataNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E81BD1E3BC00314B13 /* YYAddEmotionDataNoteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B986E1BCF1360005EB1CE /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B986D1BCF1360005EB1CE /* CoreDataHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B98701BCF1503005EB1CE /* EmotionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B986F1BCF1503005EB1CE /* EmotionTest.swift */; settings = {ASSET_TAGS = (); }; };
-		5F3B98761BCF38B9005EB1CE /* ios_swift_practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F64DAC51B4D48AC00DD5909 /* ios_swift_practice.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		5F3B987A1BCF6F19005EB1CE /* EmotionDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B98791BCF6F19005EB1CE /* EmotionDataTest.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B987D1BD0505A005EB1CE /* ModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B987C1BD0505A005EB1CE /* ModelError.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B987F1BD05EC9005EB1CE /* YYChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B987E1BD05EC9005EB1CE /* YYChatViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -136,6 +136,7 @@
 		5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYAddEmotionDataNavigationController.swift; sourceTree = "<group>"; };
 		5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EmotionDataSet+CoreDataProperties.swift"; path = "Model/EmotionDataSet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionDataSet.swift; path = Model/EmotionDataSet.swift; sourceTree = "<group>"; };
+		5F2090E81BD1E3BC00314B13 /* YYAddEmotionDataNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYAddEmotionDataNoteViewController.swift; sourceTree = "<group>"; };
 		5F3B986D1BCF1360005EB1CE /* CoreDataHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		5F3B986F1BCF1503005EB1CE /* EmotionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionTest.swift; sourceTree = "<group>"; };
 		5F3B98791BCF6F19005EB1CE /* EmotionDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataTest.swift; sourceTree = "<group>"; };
@@ -294,6 +295,7 @@
 				5F3B987E1BD05EC9005EB1CE /* YYChatViewController.swift */,
 				5F3B98801BD0861F005EB1CE /* YYAddEmotionDataController.swift */,
 				5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */,
+				5F2090E81BD1E3BC00314B13 /* YYAddEmotionDataNoteViewController.swift */,
 			);
 			path = ios_swift_practice;
 			sourceTree = "<group>";
@@ -660,6 +662,7 @@
 			files = (
 				5F64DAC11B4D48AC00DD5909 /* ViewController.swift in Sources */,
 				5FE2E0671BCB43B10085C935 /* EmotionData.swift in Sources */,
+				5F2090E91BD1E3BC00314B13 /* YYAddEmotionDataNoteViewController.swift in Sources */,
 				5F64DAC71B4D48AC00DD5909 /* ios_swift_practice.xcdatamodeld in Sources */,
 				5F64DABF1B4D48AC00DD5909 /* AppDelegate.swift in Sources */,
 				5F5DE5621BC0E0E600F269A3 /* SampleTableViewController.swift in Sources */,
@@ -679,7 +682,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3B98761BCF38B9005EB1CE /* ios_swift_practice.xcdatamodeld in Sources */,
 				5F3B987A1BCF6F19005EB1CE /* EmotionDataTest.swift in Sources */,
 				5F3B986E1BCF1360005EB1CE /* CoreDataHelpers.swift in Sources */,
 				5F64DAD71B4D48AC00DD5909 /* ios_swift_practiceTests.swift in Sources */,

@@ -7,25 +7,29 @@
 //
 
 import Foundation
+import CoreData
 
 import UIKit
 
 class YYAddEmotionDataNavigationController: UINavigationController{
-    var emotionCount = 1
+    var emotionIndex = 0
+    var managedObjectContext: NSManagedObjectContext!
     var emotions: [Emotion]!
+    var emotionDataSet: EmotionDataSet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-        print("cancel")
+    func saveEmotionData(emotionIndex:Int, emotionData: EmotionData){
+        emotions[emotionIndex].emotion_datas?.setByAddingObject(emotionData)
+        emotionDataSet.emotion_datas?.setByAddingObject(emotionData)
+        try! managedObjectContext.save()
     }
     
-    @IBAction func done(sender: AnyObject) {
-        performSegueWithIdentifier("NextEmotionDataSegue", sender: self)
-    }
-    
-    @IBAction func AddData(sender: AnyObject) {
+    func saveNote(note:String){
+        emotionDataSet.note = note
+        try! managedObjectContext.save()
     }
 }

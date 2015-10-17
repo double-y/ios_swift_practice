@@ -14,7 +14,7 @@
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="emotion_datas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
+        <relationship name="emotion_datas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
     </entity>
     <entity name="Person" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>

@@ -64,8 +64,9 @@ class ViewController: UIViewController, WCSessionDelegate{
             let emotion = try! Emotion.fetchAll(managedObjectContext)
             if(emotion == nil){
             }else{
-                vc.emotionCount = 1
+                vc.emotionIndex = 0
                 vc.emotions = emotion!
+                vc.emotionDataSet = try! EmotionDataSet.create(managedObjectContext)
             }
         }
     }
