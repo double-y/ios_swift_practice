@@ -6,14 +6,23 @@
         <relationship name="emotion_datas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
     </entity>
     <entity name="EmotionData" representedClassName=".EmotionData" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="EmotionDataSet" representedClassName=".EmotionDataSet" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="emotion_datas" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
+    </entity>
     <entity name="Person" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Emotion" positionX="-63" positionY="-9" width="128" height="90"/>
-        <element name="EmotionData" positionX="-54" positionY="0" width="128" height="60"/>
+        <element name="EmotionData" positionX="-54" positionY="0" width="128" height="90"/>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="EmotionDataSet" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>

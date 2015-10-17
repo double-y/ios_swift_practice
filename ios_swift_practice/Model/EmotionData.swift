@@ -13,12 +13,11 @@ class EmotionData: NSManagedObject {
     static let entityName = "EmotionData"
 
 // Insert code here to add functionality to your managed object subclass
-    static func createEmotionData(context:NSManagedObjectContext, emotion:Emotion, value:Int) throws -> EmotionData{
+    static func create(context:NSManagedObjectContext, emotion:Emotion, value:Int) throws -> EmotionData{
         let emotionData = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! EmotionData
         emotionData.value = value
+        emotionData
         emotion.emotion_datas?.setByAddingObject(emotionData)
-        try context.save()
         return emotionData
     }
-
 }

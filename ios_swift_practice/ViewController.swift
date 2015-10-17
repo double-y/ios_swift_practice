@@ -34,13 +34,13 @@ class ViewController: UIViewController, WCSessionDelegate{
         managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
         do{
-            let emotions = try Emotion.fetch(managedObjectContext)
+            let emotions = try Emotion.fetchAll(managedObjectContext)
             for emotion in emotions! {
                 managedObjectContext.deleteObject(emotion)
             }
             try managedObjectContext.save()
-            try Emotion.createData(managedObjectContext, name: "happiness")
-            try Emotion.createData(managedObjectContext, name: "stress")
+            try Emotion.create(managedObjectContext, name: "happiness")
+            try Emotion.create(managedObjectContext, name: "stress")
         }catch{
             print("create error")
         }
@@ -61,7 +61,7 @@ class ViewController: UIViewController, WCSessionDelegate{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? YYAddEmotionDataNavigationController{
-            let emotion = try! Emotion.fetch(managedObjectContext)
+            let emotion = try! Emotion.fetchAll(managedObjectContext)
             if(emotion == nil){
             }else{
                 vc.emotionCount = 1

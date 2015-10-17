@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ios_swift_practice/Model/EmotionDataSet+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ios_swift_practice/Model/EmotionDataSet.swift">
+   </FileRef>
+   <FileRef
       location = "group:ios_swift_practice/Model/EmotionData+CoreDataProperties.swift">
    </FileRef>
    <FileRef

@@ -14,7 +14,7 @@ class Emotion: NSManagedObject {
 
     // Insert code here to add functionality to your managed object subclass
     
-    static func createData(context: NSManagedObjectContext, name:String) throws -> Emotion? {
+    static func create(context: NSManagedObjectContext, name:String) throws -> Emotion? {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])
         let result = try context.executeFetchRequest(fetchRequest)
@@ -28,12 +28,12 @@ class Emotion: NSManagedObject {
         return emotion
     }
     
-    static func fetch(context: NSManagedObjectContext) throws -> [Emotion]? {
+    static func fetchAll(context: NSManagedObjectContext) throws -> [Emotion]? {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         return try context.executeFetchRequest(fetchRequest) as? [Emotion]
     }
     
-    static func fetchData(context: NSManagedObjectContext, name: String) throws -> [Emotion]? {
+    static func fetchByName(context: NSManagedObjectContext, name: String) throws -> [Emotion]? {
     
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])

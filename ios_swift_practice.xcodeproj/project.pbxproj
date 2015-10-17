@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F2090E31BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		5F2090E61BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		5F2090E71BD1DBA500314B13 /* EmotionDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B986E1BCF1360005EB1CE /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B986D1BCF1360005EB1CE /* CoreDataHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B98701BCF1503005EB1CE /* EmotionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3B986F1BCF1503005EB1CE /* EmotionTest.swift */; settings = {ASSET_TAGS = (); }; };
 		5F3B98761BCF38B9005EB1CE /* ios_swift_practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5F64DAC51B4D48AC00DD5909 /* ios_swift_practice.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
@@ -132,6 +134,8 @@
 		0BD0C27D11E40A01FF3F8D9E /* Pods-ios_swift_practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_swift_practice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_swift_practice/Pods-ios_swift_practice.debug.xcconfig"; sourceTree = "<group>"; };
 		2E1430C1357C4D331B8A71B6 /* Pods_ios_swift_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_swift_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYAddEmotionDataNavigationController.swift; sourceTree = "<group>"; };
+		5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EmotionDataSet+CoreDataProperties.swift"; path = "Model/EmotionDataSet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionDataSet.swift; path = Model/EmotionDataSet.swift; sourceTree = "<group>"; };
 		5F3B986D1BCF1360005EB1CE /* CoreDataHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		5F3B986F1BCF1503005EB1CE /* EmotionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionTest.swift; sourceTree = "<group>"; };
 		5F3B98791BCF6F19005EB1CE /* EmotionDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionDataTest.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 		5F3B987B1BD05027005EB1CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */,
+				5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */,
 				5FE2E0641BCB43B10085C935 /* EmotionData+CoreDataProperties.swift */,
 				5FE2E0651BCB43B10085C935 /* EmotionData.swift */,
 				5FE2E0601BCB43710085C935 /* Emotion+CoreDataProperties.swift */,
@@ -658,11 +664,13 @@
 				5F64DABF1B4D48AC00DD5909 /* AppDelegate.swift in Sources */,
 				5F5DE5621BC0E0E600F269A3 /* SampleTableViewController.swift in Sources */,
 				5F2090E31BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift in Sources */,
+				5F2090E71BD1DBA500314B13 /* EmotionDataSet.swift in Sources */,
 				5F3B987D1BD0505A005EB1CE /* ModelError.swift in Sources */,
 				5FE2E0621BCB43710085C935 /* Emotion+CoreDataProperties.swift in Sources */,
 				5FE2E0661BCB43B10085C935 /* EmotionData+CoreDataProperties.swift in Sources */,
 				5F3B987F1BD05EC9005EB1CE /* YYChatViewController.swift in Sources */,
 				5F3B98811BD0861F005EB1CE /* YYAddEmotionDataController.swift in Sources */,
+				5F2090E61BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift in Sources */,
 				5FE2E0631BCB43710085C935 /* Emotion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
