@@ -24,7 +24,6 @@ class Emotion: NSManagedObject {
         
         let emotion = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! Emotion
         emotion.name = name
-        try context.save()
         return emotion
     }
     

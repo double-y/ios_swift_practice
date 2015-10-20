@@ -23,8 +23,8 @@ class YYAddEmotionDataNavigationController: UINavigationController{
     }
     
     func saveEmotionData(emotionIndex:Int, emotionData: EmotionData){
-        emotions[emotionIndex].emotion_datas?.setByAddingObject(emotionData)
-        emotionDataSet.emotion_datas?.setByAddingObject(emotionData)
+        emotions[emotionIndex].addEmotionDatasObject(emotionData)
+        emotionDataSet.mutableSetValueForKey("emotionDatas").addObject(emotionData)
         try! managedObjectContext.save()
     }
     

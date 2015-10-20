@@ -11,46 +11,43 @@ import WatchConnectivity
 import Charts
 import CoreData
 
-class ViewController: UIViewController, WCSessionDelegate{
-    var session: WCSession!
-    @IBOutlet weak var angerValue: UITextField!
-    @IBOutlet weak var happinessValue: UITextField!
-    
+class ViewController: UIViewController{
     var managedObjectContext: NSManagedObjectContext! = nil
     
+    @IBOutlet weak var dataSetCount: UILabel!
     var happinessData = [NSManagedObject]()
     var angerData = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(WCSession.isSupported())
-        if (WCSession.isSupported()) {
-            session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }
+        /*print(WCSession.isSupported())
+        session = WCSession.defaultSession()
+        session?.delegate = self
+        session?.activateSession()*/
+
 
         managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
         do{
-            let emotions = try Emotion.fetchAll(managedObjectContext)
-            for emotion in emotions! {
-                managedObjectContext.deleteObject(emotion)
+            if !((try! Emotion.fetchAll(managedObjectContext))!.count > 0) {
+                try Emotion.create(managedObjectContext, name: "happiness")
+                try Emotion.create(managedObjectContext, name: "stress")
+                try managedObjectContext.save()
             }
-            try managedObjectContext.save()
-            try Emotion.create(managedObjectContext, name: "happiness")
-            try Emotion.create(managedObjectContext, name: "stress")
         }catch{
             print("create error")
         }
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.angerValue.text = message["anger_value"] as? String
-            self.happinessValue.text = message["happiness_value"] as? String
+    override func viewWillAppear(animated: Bool) {
+        let emotionDataSets = (try! EmotionDataSet.fetchAll(managedObjectContext))
+        if emotionDataSets?.count > 0 {
+            dataSetCount.text = "\(emotionDataSets!.count)"
         }
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         replyHandler(["aa":"aa"])
     }
 

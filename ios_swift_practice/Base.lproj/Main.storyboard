@@ -31,19 +31,38 @@
                                     <segue destination="EXV-hr-4Fd" kind="modal" id="3tq-2g-qF2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total DataSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pU-Fc-yJF">
+                                <rect key="frame" x="248" y="56" width="103.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8do-k9-EYo">
+                                <rect key="frame" x="295.5" y="94.5" width="10.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0pU-Fc-yJF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="Kav-AW-NM8"/>
+                            <constraint firstItem="8do-k9-EYo" firstAttribute="top" secondItem="0pU-Fc-yJF" secondAttribute="bottom" constant="18" id="QAb-TJ-SFT"/>
+                            <constraint firstItem="8do-k9-EYo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aJx-dO-lbA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sgg-xM-vsd" secondAttribute="trailing" id="cqn-Jv-Fdt"/>
+                            <constraint firstItem="0pU-Fc-yJF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dQD-Cv-WUE"/>
                             <constraint firstItem="uwl-wn-DHW" firstAttribute="top" secondItem="sgg-xM-vsd" secondAttribute="bottom" id="jNi-SV-mtL"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uwl-wn-DHW" secondAttribute="bottom" id="oxQ-P8-i99"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uwl-wn-DHW" secondAttribute="trailing" id="sNo-12-KxB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataSetCount" destination="8do-k9-EYo" id="qhV-az-n2h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="-229"/>
+            <point key="canvasLocation" x="-647" y="-445"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="ZZb-bV-mHo">
@@ -72,7 +91,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhM-wS-vYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="835" y="101"/>
+            <point key="canvasLocation" x="2159" y="857"/>
         </scene>
         <!--Add Emotion Data Navigation Controller-->
         <scene sceneID="mMr-iC-yGj">
@@ -89,7 +108,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dY-tl-5C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-189" y="178"/>
+            <point key="canvasLocation" x="451" y="-445"/>
         </scene>
         <!--Add Emotion Data Controller-->
         <scene sceneID="5IC-9W-p0J">
@@ -122,9 +141,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HBA-rV-XEx">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="dF7-eQ-1LJ">
-                            <color key="tintColor" red="1" green="0.03014565537" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Note" id="Ayk-Jh-oM0">
                             <connections>
                                 <action selector="finish:" destination="mg9-XO-ShL" id="lVq-dK-urU"/>
@@ -139,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yas-eQ-79V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="803" y="931"/>
+            <point key="canvasLocation" x="463" y="363"/>
         </scene>
         <!--Add Emotion Data Note View Controller-->
         <scene sceneID="AOc-jY-Wlo">
@@ -169,12 +185,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="fCz-Du-cul">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="vRg-bt-alO">
-                            <color key="tintColor" red="1" green="0.03014565537" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="back:" destination="ssj-Wz-2LQ" id="cjd-cw-rgv"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Finish" id="Kf6-vC-LFP">
                             <connections>
                                 <action selector="finish:" destination="ssj-Wz-2LQ" id="14i-lg-dJ8"/>
@@ -188,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPz-wQ-hHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="413" y="363"/>
+            <point key="canvasLocation" x="1289" y="371"/>
         </scene>
         <!--Sample Table View Controller-->
         <scene sceneID="DX4-KY-92F">
@@ -240,12 +250,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQw-gZ-WzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="1071"/>
+            <point key="canvasLocation" x="1965" y="-505"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chart View Controller-->
         <scene sceneID="UmW-rl-a20">
             <objects>
-                <viewController id="EXV-hr-4Fd" customClass="YYChatViewController" customModule="ios_swift_practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EXV-hr-4Fd" customClass="YYChartViewController" customModule="ios_swift_practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y1c-kh-sD5"/>
                         <viewControllerLayoutGuide type="bottom" id="fyG-kr-cy4"/>
@@ -262,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVh-pE-Raz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="1274"/>
+            <point key="canvasLocation" x="-662" y="518"/>
         </scene>
     </scenes>
 </document>

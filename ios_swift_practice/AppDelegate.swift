@@ -8,19 +8,28 @@
 
 import UIKit
 import CoreData
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
 
     var window: UIWindow?
+    var session: WCSession?
     
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: ([NSObject : AnyObject]?) -> Void) {
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "watch kit", object: userInfo))
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        print(message)
+        if((message["session"] as? String) == "start"){
+            let emotions = try! Emotion.fetchAll(managedObjectContext)
+            replyHandler(["emotionNames": emotions!.map{$0.name}])
+            return
+        }
     }
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        session = WCSession.defaultSession()
+        session?.delegate = self
+        session?.activateSession()
         return true
     }
 

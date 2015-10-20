@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class YYAddEmotionDataController: UIViewController{    
+class YYAddEmotionDataController: UIViewController{
     @IBOutlet weak var emotionLabel: UILabel!
     @IBOutlet weak var emotionSlider: UISlider!
     
@@ -18,6 +19,7 @@ class YYAddEmotionDataController: UIViewController{
 
     var emotionIndex = 0
     var emotionName = ""
+    var previousTitle = "Back"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,21 @@ class YYAddEmotionDataController: UIViewController{
         if(nextEmotionIndex < getParentViewController().emotions.count){
             finishButton.title = getParentViewController().emotions[nextEmotionIndex].name
         }
+        
+        if(emotionIndex == 0){
+            print(navigationItem.leftBarButtonItem)
+            let barButtonItem = UIBarButtonItem()
+            barButtonItem.title = "Back"
+            barButtonItem.target = self
+            barButtonItem.action = Selector("backHome:")
+            navigationItem.leftBarButtonItem=barButtonItem
+        }
+    }
+    
+    func backHome(sender: AnyObject) {
+        let parentViewController = getParentViewController()
+        parentViewController.managedObjectContext.rollback()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func finish(sender: AnyObject) {

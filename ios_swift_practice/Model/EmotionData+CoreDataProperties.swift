@@ -15,6 +15,8 @@ import CoreData
 extension EmotionData {
 
     @NSManaged var value: NSNumber!
-    @NSManaged var created_at: NSDate!
+    @NSManaged var createdAt: NSDate!
+    @NSManaged var emotion: Emotion!
+    @NSManaged var emotionDataSet: EmotionDataSet!
 
 }

@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
     <entity name="Emotion" representedClassName=".Emotion" syncable="YES">
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="emotion_datas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
+        <relationship name="emotionDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" inverseName="emotion" inverseEntity="EmotionData" syncable="YES"/>
     </entity>
     <entity name="EmotionData" representedClassName=".EmotionData" syncable="YES">
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" syncable="YES"/>
+        <relationship name="emotion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Emotion" inverseName="emotionDatas" inverseEntity="Emotion" syncable="YES"/>
+        <relationship name="emotionDataSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionDataSet" inverseName="emotionDatas" inverseEntity="EmotionDataSet" syncable="YES"/>
     </entity>
     <entity name="EmotionDataSet" representedClassName=".EmotionDataSet" syncable="YES">
-        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="emotion_datas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="emotionDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionData" inverseName="emotionDataSet" inverseEntity="EmotionData" syncable="YES"/>
     </entity>
     <entity name="Person" syncable="YES">
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Emotion" positionX="-63" positionY="-9" width="128" height="90"/>
-        <element name="EmotionData" positionX="-54" positionY="0" width="128" height="90"/>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="EmotionData" positionX="-54" positionY="0" width="128" height="120"/>
         <element name="EmotionDataSet" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>
