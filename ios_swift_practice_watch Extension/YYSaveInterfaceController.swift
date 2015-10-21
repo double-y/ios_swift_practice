@@ -12,6 +12,7 @@ import WatchConnectivity
 class YYSaveInterfaceController: WKInterfaceController{
     var emotionDatas: [String: Int]!
     
+    @IBOutlet var statusLabel: WKInterfaceLabel!
     override func willActivate() {
         print(emotionDatas)
         getExtensionDelegate().session?.sendMessage(
@@ -20,8 +21,10 @@ class YYSaveInterfaceController: WKInterfaceController{
                 "emotionDatas":emotionDatas
             ], replyHandler: {(reply) -> Void in
                 print("save")
+                self.statusLabel.setText("Success")
+                self.popToRootController()
             }, errorHandler: { (error) -> Void in
-                print("error")
+                self.statusLabel.setText("Error")
         })
     }
 
