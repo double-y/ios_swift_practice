@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
         let flag = message[flagTagForMessage] as! String
         if(flag == "start"){
             let emotions = try! Emotion.fetchAll(managedObjectContext)
-            replyHandler(["emotionNames": emotions!.map{$0.name}])
+            replyHandler(["emotionNames": emotions!.map{$0.name},"emotionColors": emotions!.map{$0.color}])
             return
         }
         if(flag == "saveEmotionDatas"){
@@ -41,6 +41,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        do{
+            if !((try! Emotion.fetchAll(managedObjectContext))!.count > 0) {
+                try Emotion.create(managedObjectContext, name: "happiness", color:Emotion.EmotionColor.Yellow)
+                try Emotion.create(managedObjectContext, name: "stress", color:Emotion.EmotionColor.Red)
+                try managedObjectContext.save()
+            }
+        }catch{
+            print("create error")
+        }
+        
         session = WCSession.defaultSession()
         session?.delegate = self
         session?.activateSession()

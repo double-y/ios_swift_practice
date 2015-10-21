@@ -28,16 +28,6 @@ class ViewController: UIViewController{
 
 
         managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
-        do{
-            if !((try! Emotion.fetchAll(managedObjectContext))!.count > 0) {
-                try Emotion.create(managedObjectContext, name: "happiness")
-                try Emotion.create(managedObjectContext, name: "stress")
-                try managedObjectContext.save()
-            }
-        }catch{
-            print("create error")
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,10 +35,6 @@ class ViewController: UIViewController{
         if emotionDataSets?.count > 0 {
             dataSetCount.text = "\(emotionDataSets!.count)"
         }
-    }
-    
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        replyHandler(["aa":"aa"])
     }
 
     override func didReceiveMemoryWarning() {

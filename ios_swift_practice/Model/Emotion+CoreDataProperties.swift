@@ -17,6 +17,7 @@ extension Emotion {
     @NSManaged var createdAt: NSDate!
     @NSManaged var name: String!
     @NSManaged var emotionDatas: NSMutableSet?
+    @NSManaged var color: String!
 
     @NSManaged func addEmotionDatasObject(emotionData: EmotionData)
 

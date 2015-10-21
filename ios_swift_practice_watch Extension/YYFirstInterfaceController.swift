@@ -25,13 +25,7 @@ class YYFirstInterfaceController: WKInterfaceController{
     }
     
     // image generator: http://hmaidasani.github.io/RadialChartImageGenerator/
-    let items:[WKPickerItem] = (0...10).map {
-        let pickerItem = WKPickerItem()
-        let fileName = "single\($0)#0f45f7.png"
-        pickerItem.contentImage = WKImage(imageName: fileName)
-        return pickerItem
-    }
-
+    
     @IBAction func next() {
         values.append(value)
         if(getExtensionDelegate().emotionNames?.count == emotionIndex+1){
@@ -60,12 +54,21 @@ class YYFirstInterfaceController: WKInterfaceController{
         let delegate = getExtensionDelegate()
         let session = getExtensionDelegate().session
         session?.activateSession()
+        
         if(context == nil){
             session?.sendMessage([ExtensionDelegate.flagForMessage: "start"], replyHandler: {(response: [String:AnyObject]) -> Void in
                 print(response)
                 delegate.emotionNames = response["emotionNames"] as! [String]?
+                delegate.emotionColors = response["emotionColors"] as! [String]?
                 self.nextButton.setHidden(false)
                 self.setTitle(self.getExtensionDelegate().emotionNames?[self.emotionIndex])
+                
+                let color = delegate.emotionColors![self.emotionIndex]
+                let items = self.getPickerItems(color)
+                self.valuePicker.setItems(items)
+                self.valuePicker.setSelectedItemIndex(self.value)
+                self.valuePicker.focus()
+
                 }, errorHandler: {(error:NSError) -> Void in
                     print("error")
             })
@@ -74,6 +77,12 @@ class YYFirstInterfaceController: WKInterfaceController{
             let title = contextDict?["emotionName"] as! String
             self.setTitle(title)
             emotionIndex = (contextDict?["emotionIndex"])! as! Int
+
+            let color = (delegate.emotionColors?[emotionIndex])!
+            let items = self.getPickerItems(color)
+            self.valuePicker.setItems(items)
+            self.valuePicker.setSelectedItemIndex(self.value)
+            self.valuePicker.focus()
             
             values = contextDict?["values"] as! [Int]
             
@@ -88,9 +97,17 @@ class YYFirstInterfaceController: WKInterfaceController{
 
     override func willActivate() {
         super.willActivate()
-        valuePicker.setItems(items)
-        valuePicker.setSelectedItemIndex(value)
-        valuePicker.focus()
+    }
+    
+    func getPickerItems(colorString:String?) -> [WKPickerItem]{
+        let items: [WKPickerItem] = (0...10).map {(index) -> WKPickerItem in
+            let pickerItem = WKPickerItem()
+            let fileName = colorString.flatMap{"single\(index)\($0).png"} ?? "single#ffff00.png"
+            print(fileName)
+            pickerItem.contentImage = WKImage(imageName: fileName)
+            return pickerItem
+        }
+        return items
     }
     
     func getExtensionDelegate() -> ExtensionDelegate{
