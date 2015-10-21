@@ -20,6 +20,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
         session = WCSession.defaultSession()
         session!.delegate = self
         session!.activateSession()
+        
     }
 
     func applicationDidBecomeActive() {
@@ -30,14 +31,4 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
-    
-    /*func sessionStart(replyHandler replyHandler:(([String : AnyObject]) -> Void)!, errorHandler:((NSError) -> Void)!){
-        self.session!.sendMessage(["session": "start"],replyHandler: {(dict) -> Void in
-            print(dict)
-            self.emotionNames = dict["emotionNames"] as! [String]?
-                replyHandler(dict)
-            },errorHandler: {(error) -> Void in
-                errorHandler(error)
-        })
-    }*/
 }
