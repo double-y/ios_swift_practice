@@ -32,11 +32,11 @@ class Emotion: NSManagedObject {
         return try context.executeFetchRequest(fetchRequest) as? [Emotion]
     }
     
-    static func fetchByName(context: NSManagedObjectContext, name: String) throws -> [Emotion]? {
+    static func fetchByName(context: NSManagedObjectContext, name: String) throws -> Emotion? {
     
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])
     
-        return try context.executeFetchRequest(fetchRequest) as? [Emotion]
+        return try context.executeFetchRequest(fetchRequest).first as? Emotion
     }
 }

@@ -5,11 +5,23 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
+        <!--YYSaveInterfaceController-->
+        <scene sceneID="iFR-p3-QT9">
+            <objects>
+                <controller identifier="YYSaveInterfaceController" hidesWhenLoading="NO" id="1En-BK-Y8J" customClass="YYSaveInterfaceController" customModule="ios_swift_practice_watch_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="205"/>
+        </scene>
         <!--YYFirstInterfaceController-->
         <scene sceneID="3Rl-1d-6dP">
             <objects>
                 <controller identifier="YYFirstInterfaceController" hidesWhenLoading="NO" id="0MA-E9-XWu" customClass="YYFirstInterfaceController" customModule="ios_swift_practice_watch_Extension">
                     <items>
+                        <picker width="1" height="1" alignment="left" style="sequence" id="ys4-gh-U1I">
+                            <connections>
+                                <action selector="changeValue:" destination="0MA-E9-XWu" id="Nha-su-es8"/>
+                            </connections>
+                        </picker>
                         <button width="1" alignment="left" hidden="YES" title="Next" id="fiX-oa-3DJ">
                             <connections>
                                 <action selector="next" destination="0MA-E9-XWu" id="kQ9-Sw-w3Y"/>
@@ -18,6 +30,7 @@
                     </items>
                     <connections>
                         <outlet property="nextButton" destination="fiX-oa-3DJ" id="U88-Jz-Hrz"/>
+                        <outlet property="valuePicker" destination="ys4-gh-U1I" id="YPJ-5N-wtX"/>
                     </connections>
                 </controller>
             </objects>

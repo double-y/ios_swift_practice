@@ -15,13 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
 
     var window: UIWindow?
     var session: WCSession?
+    let flagTagForMessage = "flag"
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         print(message)
-        if((message["session"] as? String) == "start"){
+        let flag = message[flagTagForMessage] as! String
+        if(flag == "start"){
             let emotions = try! Emotion.fetchAll(managedObjectContext)
             replyHandler(["emotionNames": emotions!.map{$0.name}])
             return
+        }
+        if(flag == "saveEmotionDatas"){
+            let emotionDatas: [String: Int] = message["emotionDatas"] as! [String: Int]
+            let emotionDataSet = try! EmotionDataSet.create(managedObjectContext)
+            for (name, value) in emotionDatas{
+                let emotion = try! Emotion.fetchByName(managedObjectContext, name: name)
+                let emotionData = try! EmotionData.create(managedObjectContext, value: value)
+                emotion?.addEmotionDatasObject(emotionData)
+                emotionDataSet.addEmotionDatasObject(emotionData)
+            }
+            try! managedObjectContext.save()
+            replyHandler(["result": "success"])
         }
     }
 

@@ -12,6 +12,7 @@ import WatchConnectivity
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate{
     var session: WCSession?
     var emotionNames: [String]?
+    static let flagForMessage = "flag"
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.

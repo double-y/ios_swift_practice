@@ -9,20 +9,46 @@
 import WatchKit
 import WatchConnectivity
 
-class YYFirstInterfaceController: WKInterfaceController, WCSessionDelegate{
+class YYFirstInterfaceController: WKInterfaceController{
     
     var emotionIndex = 0
+    var values: [Int] = []
+    var value = 5
+
     @IBOutlet var nextButton: WKInterfaceButton!
     
+    @IBOutlet var valuePicker: WKInterfacePicker!
+    
+    
+    @IBAction func changeValue(value: Int) {
+        self.value = value
+    }
+    
+    let items:[WKPickerItem] = (0...10).map {
+        let pickerItem = WKPickerItem()
+        let fileName = "single\($0)happiness.png"
+        pickerItem.contentImage = WKImage(imageName: fileName)
+        return pickerItem
+    }
+
     @IBAction func next() {
+        values.append(value)
         if(getExtensionDelegate().emotionNames?.count == emotionIndex+1){
-            popToRootController()
-        }else{
-            pushControllerWithName("YYFirstInterfaceController", context: [
-                "emotionName": "\(getExtensionDelegate().emotionNames?[emotionIndex+1])",
-                "emotionIndex": "\(emotionIndex+1)"
-                ]
+            var contextDict = Dictionary<String, Int>()
+            for (index, name) in getExtensionDelegate().emotionNames!.enumerate(){
+                contextDict[name] = values[index]
+            }
+            pushControllerWithName("YYSaveInterfaceController", context:
+                contextDict
             )
+        }else{
+            let nextIndex = self.emotionIndex+1
+            let emotionNames = getExtensionDelegate().emotionNames
+            var contentDict = Dictionary<String, AnyObject>()
+            contentDict["emotionName"] = emotionNames?[nextIndex]
+            contentDict["emotionIndex"] = nextIndex
+            contentDict["values"] = values
+            pushControllerWithName("YYFirstInterfaceController", context:contentDict)
         }
     }
     
@@ -32,10 +58,9 @@ class YYFirstInterfaceController: WKInterfaceController, WCSessionDelegate{
         
         let delegate = getExtensionDelegate()
         let session = getExtensionDelegate().session
-        session?.delegate = self
         session?.activateSession()
         if(context == nil){
-            session?.sendMessage(["session": "start"], replyHandler: {(response: [String:AnyObject]) -> Void in
+            session?.sendMessage([ExtensionDelegate.flagForMessage: "start"], replyHandler: {(response: [String:AnyObject]) -> Void in
                 print(response)
                 delegate.emotionNames = response["emotionNames"] as! [String]?
                 self.nextButton.setHidden(false)
@@ -44,10 +69,14 @@ class YYFirstInterfaceController: WKInterfaceController, WCSessionDelegate{
                     print("error")
             })
         }else{
-            let contextDict = context as? Dictionary<String, String>
-            let title = contextDict?["emotionName"]
+            let contextDict = context as? Dictionary<String, AnyObject>
+            let title = contextDict?["emotionName"] as! String
             self.setTitle(title)
-            emotionIndex = Int((contextDict?["emotionIndex"])!)!
+            emotionIndex = (contextDict?["emotionIndex"])! as! Int
+            
+            values = contextDict?["values"] as! [Int]
+            
+            
             self.nextButton.setHidden(false)
         }
         
@@ -58,6 +87,9 @@ class YYFirstInterfaceController: WKInterfaceController, WCSessionDelegate{
 
     override func willActivate() {
         super.willActivate()
+        valuePicker.setItems(items)
+        valuePicker.setSelectedItemIndex(value)
+        valuePicker.focus()
     }
     
     func getExtensionDelegate() -> ExtensionDelegate{
