@@ -24,9 +24,10 @@ class YYFirstInterfaceController: WKInterfaceController{
         self.value = value
     }
     
+    // image generator: http://hmaidasani.github.io/RadialChartImageGenerator/
     let items:[WKPickerItem] = (0...10).map {
         let pickerItem = WKPickerItem()
-        let fileName = "single\($0)happiness.png"
+        let fileName = "single\($0)#0f45f7.png"
         pickerItem.contentImage = WKImage(imageName: fileName)
         return pickerItem
     }
