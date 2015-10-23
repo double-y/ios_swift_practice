@@ -54,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
         session = WCSession.defaultSession()
         session?.delegate = self
         session?.activateSession()
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        
         return true
     }
 

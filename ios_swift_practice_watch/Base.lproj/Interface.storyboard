@@ -74,6 +74,43 @@
             </objects>
             <point key="canvasLocation" x="220" y="643"/>
         </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="xYs-6m-LkR">
+            <objects>
+                <glanceController hidesWhenLoading="NO" topTemplateType="groupLeftSmall" bottomTemplateType="extraLargeLargeBody1Footer" id="Pn7-3d-2AN">
+                    <items>
+                        <group alignment="left" id="E3V-RB-QI6">
+                            <items>
+                                <imageView width="1" height="1" alignment="left" id="WuH-Hq-eJS"/>
+                            </items>
+                        </group>
+                        <label alignment="left" text="Label" id="fiD-ij-gp3"/>
+                        <label alignment="left" text="Label" id="ieK-f4-twj"/>
+                        <label alignment="left" text="Label" id="vja-Oi-ZGl"/>
+                        <label alignment="left" text="1234" id="nTR-Eu-7zc"/>
+                        <label alignment="left" text="1234" id="9fw-Bh-MQI"/>
+                        <label alignment="left" text="Label" id="VRU-r7-NbO"/>
+                        <label alignment="left" text="Footer" id="DOm-Y5-V8p"/>
+                    </items>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="297" y="183"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="mkB-SV-ZCj">
+            <objects>
+                <notificationController hidesWhenLoading="NO" id="C6l-TT-3FH">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="Fvv-Dl-V8k"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="WYB-om-tAs"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="Fvv-Dl-V8k" id="0CC-ly-KWY"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="314" y="408"/>
+        </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
