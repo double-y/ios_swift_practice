@@ -9,6 +9,11 @@ import CoreData
 
 class Emotion: NSManagedObject {
     static let entityName = "Emotion"
+    
+    static let blueColorHexString = "#0f45f7"
+    static let greenColorHexString = "#1bff0a"
+    static let redColorHexString = "#d41e11"
+    static let yellowColorHexString = "#ffff00"
 
     // Insert code here to add functionality to your managed object subclass
     enum EmotionColor{
@@ -16,13 +21,13 @@ class Emotion: NSManagedObject {
         func getHexString() -> String{
             switch self{
             case .Blue:
-                return "#0f45f7"
+                return Emotion.blueColorHexString
             case .Green:
-                return "#1bff0a"
+                return Emotion.greenColorHexString
             case .Red:
-                return "#d41e11"
+                return Emotion.redColorHexString
             case .Yellow:
-                return "#ffff00"
+                return Emotion.yellowColorHexString
             }
         }
     }
@@ -52,6 +57,21 @@ class Emotion: NSManagedObject {
         fetchRequest.predicate = NSPredicate(format: "%K like %@", argumentArray:["name", name])
     
         return try context.executeFetchRequest(fetchRequest).first as? Emotion
+    }
+    
+    func getColor() -> EmotionColor {
+        switch self.color{
+        case Emotion.blueColorHexString:
+            return .Blue
+        case Emotion.greenColorHexString:
+            return .Green
+        case Emotion.redColorHexString:
+            return .Red
+        case Emotion.yellowColorHexString:
+            return .Yellow
+        default:
+            return .Blue
+        }
     }
 }
 

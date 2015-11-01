@@ -16,6 +16,7 @@ class EmotionData: NSManagedObject {
     static func create(context:NSManagedObjectContext, value:Int) throws -> EmotionData{
         let emotionData = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! EmotionData
         emotionData.value = value
+        emotionData.createdAt = NSDate()
         return emotionData
     }
 }
