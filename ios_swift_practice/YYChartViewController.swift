@@ -15,23 +15,21 @@ class YYChartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("didload")
         // Do view setup here.
+        let barButtonItem = UIBarButtonItem()
+        barButtonItem.title = "Back"
+        barButtonItem.target = self
+        barButtonItem.action = Selector("backHome:")
+        navigationItem.leftBarButtonItem=barButtonItem
+        
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        lineChart.descriptionText = "text"
+        lineChart.descriptionText = "1week data"
         lineChart.noDataTextDescription = "no data"
-        //let emotionDataSets = try! EmotionDataSet.fetchAll(managedObjectContext)
-        /*emotionDataSets.map{ (emotionDataSet: EmotionDataSet) -> ([(String, Int)], String, Date) in
-            emotionDataSet
-            emotionDataSet.emotion_datas.map{ (emotionData: EmotionData) -> (String, NSNumber) in
-                return (emotionData.emotion.name, emotionData.value)
-            }
-        }*/
-        //var dataSets = [String: [(ChartDataEntry, String?)]]()
     
         let allEmotions = try! Emotion.fetchAll(managedObjectContext)
         
         let lineChartDataSets = allEmotions?.map{(emotion: Emotion) -> LineChartDataSet in
-            print(emotion.emotionDatas?.allObjects)
             let dataEntries = (emotion.emotionDatas?.allObjects as!
                 [EmotionData]).map{(emotionData: EmotionData) -> ChartDataEntry in
                     let hourInterval = Int((emotionData.createdAt!.timeIntervalSinceNow)/60/60)
@@ -56,34 +54,18 @@ class YYChartViewController: UIViewController {
             }
             return lineChartDataSet
         }
-
-        /*
-        for emotionDataSet in emotionDataSets! {
-            for element in emotionDataSet.emotionDatas!{
-                let emotionData = (element as! EmotionData)
-                let hourInterval = Int(emotionDataSet.createdAt!.timeIntervalSinceNow/60/60)
-                let hourIntervalForWeek = 24*7+hourInterval
-                print(hourIntervalForWeek)
-                let dataNode = (ChartDataEntry(value: emotionData.value! as Double, xIndex: hourIntervalForWeek), emotionDataSet.note)
-                dataSets[emotionData.emotion.name]!.append(dataNode)
-            }
-        }
-        
-        let lineChartDataSets = dataSets.map{
-            let dataSet = LineChartDataSet(yVals: $1.map
-                {(dataEntry:ChartDataEntry, note:String?) -> ChartDataEntry in
-                    dataEntry},
-                label: $0)
-            dataSet.colors = UIColor.yellowColor()
-            return dataSet
-        }*/
         
         lineChart.data = LineChartData(xVals: [Int](0...(24*7)), dataSets:lineChartDataSets)
+        lineChart.xAxis.gridLineWidth = 0
         lineChart.xAxis.spaceBetweenLabels = 1
         lineChart.leftAxis.axisMinimum = 0
         lineChart.leftAxis.axisMaximum = 10
         lineChart.rightAxis.enabled = false
         lineChart.xAxis.labelPosition = ChartXAxis.XAxisLabelPosition.Bottom
+    }
+    
+    func backHome(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
