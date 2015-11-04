@@ -42,16 +42,19 @@ class YYChartViewController: UIViewController {
             let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: emotion.name)
             switch emotion.getColor(){
             case Emotion.EmotionColor.Red:
-                lineChartDataSet.colors = [UIColor.redColor()]
+                lineChartDataSet.setCircleColor(UIColor.redColor())
+                lineChartDataSet.setColor(UIColor.redColor())
             case Emotion.EmotionColor.Yellow:
-                lineChartDataSet.colors = [UIColor.yellowColor()]
+                lineChartDataSet.setCircleColor(UIColor.yellowColor())
+                lineChartDataSet.setColor(UIColor.yellowColor())
             case Emotion.EmotionColor.Green:
-                lineChartDataSet.colors = [UIColor.greenColor()]
+                lineChartDataSet.setCircleColor(UIColor.greenColor())
+                lineChartDataSet.setColor(UIColor.greenColor())
             case Emotion.EmotionColor.Blue:
-                lineChartDataSet.colors = [UIColor.blueColor()]
+                lineChartDataSet.setCircleColor(UIColor.blueColor())
+                lineChartDataSet.setColor(UIColor.blueColor())
             }
-            print(                lineChartDataSet.colors)
-            return LineChartDataSet(yVals: dataEntries, label: emotion.name)
+            return lineChartDataSet
         }
 
         /*
