@@ -31,7 +31,6 @@ class YYAddEmotionDataController: UIViewController{
         }
         
         if(emotionIndex == 0){
-            print(navigationItem.leftBarButtonItem)
             let barButtonItem = UIBarButtonItem()
             barButtonItem.title = "Back"
             barButtonItem.target = self

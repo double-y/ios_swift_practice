@@ -14,6 +14,7 @@ class YYSaveInterfaceController: WKInterfaceController{
     
     @IBOutlet var statusLabel: WKInterfaceLabel!
     override func willActivate() {
+        
         print(emotionDatas)
         getExtensionDelegate().session?.sendMessage(
             [
@@ -31,6 +32,7 @@ class YYSaveInterfaceController: WKInterfaceController{
     override func awakeWithContext(context: AnyObject?) {
         emotionDatas = context as! Dictionary<String, Int>
     }
+
     func getExtensionDelegate() -> ExtensionDelegate{
         return WKExtension.sharedExtension().delegate as! ExtensionDelegate
     }

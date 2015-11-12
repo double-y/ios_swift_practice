@@ -1,16 +1,16 @@
 {
     "aps": {
         "alert": {
-            "body": "Test message",
-            "title": "Optional title"
+            "body": "Previous Input",
+            "title": "Reminder",
         },
-        "category": "myCategory"
+        "category": "previousInput"
     },
     
     "WatchKit Simulator Actions": [
         {
-            "title": "First Button",
-            "identifier": "firstButtonAction"
+            "title": "Save Data",
+            "identifier": "save_data"
         }
     ],
     

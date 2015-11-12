@@ -114,5 +114,4 @@ class YYFirstInterfaceController: WKInterfaceController{
         return WKExtension.sharedExtension().delegate as! ExtensionDelegate
     }
     
-    
 }

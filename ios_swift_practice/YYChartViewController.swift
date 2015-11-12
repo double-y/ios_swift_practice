@@ -15,7 +15,6 @@ class YYChartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("didload")
         // Do view setup here.
         let barButtonItem = UIBarButtonItem()
         barButtonItem.title = "Back"

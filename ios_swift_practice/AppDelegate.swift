@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
                 emotion?.addEmotionDatasObject(emotionData)
                 emotionDataSet.addEmotionDatasObject(emotionData)
             }
+            AppDelegate.resetNextSchedule(UIApplication.sharedApplication())
             try! managedObjectContext.save()
             replyHandler(["result": "success"])
         }
@@ -55,9 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
         session?.delegate = self
         session?.activateSession()
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        AppDelegate.setNotificaionSetting(application)
         
         return true
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        print("identifier")
+        print(identifier)
+        completionHandler()
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -145,6 +152,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
                 abort()
             }
         }
+    }
+    
+    static func setNotificaionSetting(application: UIApplication){
+        // increment Action
+        let saveDataNotificationAction = UIMutableUserNotificationAction()
+        saveDataNotificationAction.identifier = "save_data"
+        saveDataNotificationAction.title = "Save Data"
+        saveDataNotificationAction.activationMode = UIUserNotificationActivationMode.Foreground
+        saveDataNotificationAction.authenticationRequired = false
+        saveDataNotificationAction.destructive = false
+        
+        let category = UIMutableUserNotificationCategory()
+        category.identifier = "previousInput"
+        
+        category.setActions([saveDataNotificationAction], forContext: UIUserNotificationActionContext.Default)
+
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: NSSet(object: category) as! Set<UIUserNotificationCategory>))
+    }
+    
+    static func resetNextSchedule(application: UIApplication){
+        let titles = ["three hour", "one day", "three day"]
+        let category = "previousInput"
+        
+        application.scheduledLocalNotifications?.forEach({
+            if($0.category == category){
+                print($0.category)
+                application.cancelLocalNotification($0)
+            }
+        })
+        
+        let firstScheduledLocalNotification = UILocalNotification()
+        firstScheduledLocalNotification.alertTitle = titles[0]
+        firstScheduledLocalNotification.alertBody = "last input\n3 hours ago"
+        firstScheduledLocalNotification.timeZone = NSTimeZone.localTimeZone()
+        firstScheduledLocalNotification.category = category
+        firstScheduledLocalNotification.fireDate = NSDate().dateByAddingTimeInterval(3*60*60)
+        firstScheduledLocalNotification.soundName = UILocalNotificationDefaultSoundName
+        application.scheduleLocalNotification(firstScheduledLocalNotification)
+
+        let oneDayScheduledLocalNotification = UILocalNotification()
+        oneDayScheduledLocalNotification.alertTitle = titles[1]
+        oneDayScheduledLocalNotification.alertBody = "last input\none day ago"
+        oneDayScheduledLocalNotification.timeZone = NSTimeZone.localTimeZone()
+        oneDayScheduledLocalNotification.category = category
+        oneDayScheduledLocalNotification.fireDate = NSDate().dateByAddingTimeInterval(24*60*60)
+        oneDayScheduledLocalNotification.soundName = UILocalNotificationDefaultSoundName
+        application.scheduleLocalNotification(oneDayScheduledLocalNotification)
     }
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1130AB1BF558520052CE58 /* YYInitialInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1130AA1BF558520052CE58 /* YYInitialInterfaceController.swift */; };
 		5F2090E31BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */; };
 		5F2090E61BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */; };
 		5F2090E71BD1DBA500314B13 /* EmotionDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */; };
@@ -159,6 +160,7 @@
 /* Begin PBXFileReference section */
 		0BD0C27D11E40A01FF3F8D9E /* Pods-ios_swift_practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_swift_practice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_swift_practice/Pods-ios_swift_practice.debug.xcconfig"; sourceTree = "<group>"; };
 		2E1430C1357C4D331B8A71B6 /* Pods_ios_swift_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_swift_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1130AA1BF558520052CE58 /* YYInitialInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYInitialInterfaceController.swift; sourceTree = "<group>"; };
 		5F2090E21BD1A4E600314B13 /* YYAddEmotionDataNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYAddEmotionDataNavigationController.swift; sourceTree = "<group>"; };
 		5F2090E41BD1DBA500314B13 /* EmotionDataSet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EmotionDataSet+CoreDataProperties.swift"; path = "Model/EmotionDataSet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5F2090E51BD1DBA500314B13 /* EmotionDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionDataSet.swift; path = Model/EmotionDataSet.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				5FEAE4FE1BC9996300EBA8A4 /* HappinessInterfaceController.swift */,
 				5F265ABA1BD58BD8002C5284 /* YYFirstInterfaceController.swift */,
 				5FBE18231BD7072C00E9A4F5 /* YYSaveInterfaceController.swift */,
+				5F1130AA1BF558520052CE58 /* YYInitialInterfaceController.swift */,
 			);
 			path = "ios_swift_practice_watch Extension";
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				5FBE18241BD7072C00E9A4F5 /* YYSaveInterfaceController.swift in Sources */,
 				5F886DE51BA683D800CAB0DF /* ExtensionDelegate.swift in Sources */,
 				5F265ABC1BD5A011002C5284 /* ios_swift_practice.xcdatamodeld in Sources */,
+				5F1130AB1BF558520052CE58 /* YYInitialInterfaceController.swift in Sources */,
 				5FEAE5011BC99A5400EBA8A4 /* AngerInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

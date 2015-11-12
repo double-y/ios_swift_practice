@@ -14,6 +14,7 @@ class YYAddEmotionDataNoteViewController: UIViewController{
         self.title = "Note"
     }
     @IBAction func finish(sender: AnyObject) {
+        AppDelegate.resetNextSchedule(UIApplication.sharedApplication())
         getParentViewController().saveNote(noteField.text!)
         dismissViewControllerAnimated(true, completion: nil)
     }

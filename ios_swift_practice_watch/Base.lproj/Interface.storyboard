@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mQh-Vc-hLe">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mQh-Vc-hLe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--InitialInterface-->
         <scene sceneID="5Pf-Cj-gsM">
             <objects>
-                <controller hidesWhenLoading="NO" id="mQh-Vc-hLe">
+                <controller identifier="InitialInterface" hidesWhenLoading="NO" id="mQh-Vc-hLe" customClass="YYInitialInterfaceController" customModule="ios_swift_practice_watch_Extension">
                     <items>
                         <button width="1" alignment="left" title="save data" id="PaI-Jl-RDS">
                             <connections>
@@ -63,16 +63,19 @@
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="&lt;body&gt;" textAlignment="left" numberOfLines="4" id="Fvv-Dl-V8k"/>
+                        <label alignment="left" text="1 day" id="0aS-5A-ntW">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="previousInput" id="JfB-70-Muf"/>
+                    <color key="backgroundColor" red="0.26851453414237259" green="0.55836448800244298" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <outlet property="notificationAlertLabel" destination="Fvv-Dl-V8k" id="4ca-4o-zQE"/>
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="337" y="438"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="xYs-6m-LkR">
@@ -95,28 +98,6 @@
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="297" y="183"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="mkB-SV-ZCj">
-            <objects>
-                <notificationController hidesWhenLoading="NO" id="C6l-TT-3FH">
-                    <items>
-                        <label alignment="left" text="Alert Label" id="Fvv-Dl-V8k"/>
-                    </items>
-                    <notificationCategory key="notificationCategory" id="WYB-om-tAs"/>
-                    <connections>
-                        <outlet property="notificationAlertLabel" destination="Fvv-Dl-V8k" id="0CC-ly-KWY"/>
-                    </connections>
-                </notificationController>
-            </objects>
-            <point key="canvasLocation" x="314" y="408"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="ios_swift_practice_watch" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
 </document>
